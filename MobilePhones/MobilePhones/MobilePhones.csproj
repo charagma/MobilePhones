@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201810251358599_PhoneScreenSizeTypeChanged.Designer.cs">
       <DependentUpon>201810251358599_PhoneScreenSizeTypeChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810251936017_PhoneDecimalColumns.cs" />
+    <Compile Include="Migrations\201810251936017_PhoneDecimalColumns.Designer.cs">
+      <DependentUpon>201810251936017_PhoneDecimalColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -161,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810251358599_PhoneScreenSizeTypeChanged.resx">
       <DependentUpon>201810251358599_PhoneScreenSizeTypeChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810251936017_PhoneDecimalColumns.resx">
+      <DependentUpon>201810251936017_PhoneDecimalColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

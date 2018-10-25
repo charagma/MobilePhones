@@ -22,12 +22,12 @@
                 <div class="col-md-4" style="margin-bottom:15px;">
                     <a href="@Url.Action("Specs", "Phone", new { id = phone.Id})">
                         <div>
-                            <img class="center-block" src="~/Files/@phone.Photos.ToList()[0].FileName" style="height: 200px;" />
+                            <img class="center-block" src="~/Files/@phone.Photos.First().FileName" style="height: 200px;" />
                         </div>
                         <br />
                     </a>
                     <a href="@Url.Action("Specs", "Phone", new { id = phone.Id})" class="btn center-block">@phone.Name</a>
-                    <button class="btn btn-success center-block">@phone.Price $</button>
+                    <button class="btn btn-success center-block">$@phone.Price.ToString("0.00")</button>
                 </div>
             }
         </div>

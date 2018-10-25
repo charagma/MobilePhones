@@ -5,13 +5,13 @@
     <div class="col-md-5 ">
         <div class="row">
             <div class="col-md-3">
-                @for (int i = 1; i < Model.Photos.Count; i++)
+                @foreach (var photo in Model.Photos.Skip(1))
                 {
-                    <img src="~/Files/@Model.Photos.ToList()[i].FileName" class="img-responsive" style="margin-bottom: 10px;" />
+                    <img src="~/Files/@photo.FileName" class="img-responsive" style="margin-bottom: 10px;" />
                 }
             </div>
             <div class="col-md-9">
-                <img src="~/Files/@Model.Photos.ToList()[0].FileName" class="img-responsive" style="margin-bottom: 15px;" />
+                <img src="~/Files/@Model.Photos.First().FileName" class="img-responsive" style="margin-bottom: 15px;" />
                 <div style="margin-bottom: 20px;">
                     @if (!string.IsNullOrEmpty(@Model.Video))
                     {
@@ -59,7 +59,7 @@
                 </tr>
                 <tr>
                     <td><strong>Price</strong></td>
-                    <td>@Model.Price $</td>
+                    <td>$@Model.Price.ToString("0.00")</td>
                 </tr>
             </tbody>
         </table>
