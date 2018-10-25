@@ -32,7 +32,7 @@ namespace MobilePhones.Data
             {
                 using (var db = new MobilePhonesContext())
                 {
-                    return db.Phones.Include(p => p.Photos).FirstOrDefault(p => p.Id == id);
+                    return db.Phones.Include(p => p.Photos).Include(p => p.Brand).FirstOrDefault(p => p.Id == id);
                 }
             }
             catch (Exception e)
