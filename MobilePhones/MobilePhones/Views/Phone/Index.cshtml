@@ -1,19 +1,33 @@
 ﻿@using MobilePhones.Data;
 @model List<Phone>
+@{
+    List<Brand> brands = ViewBag.Brands;
+    string searchTermPhone = ViewBag.SearchTermPhone;
+    int? searchTermMinPrice = ViewBag.SearchTermMinPrice;
+    int? searchTermMaxPrice = ViewBag.SearchTermMaxPrice;
+}
 
 <div class="row">
     <div class="col-md-2">
-        <form>
+
+        <form method="get" action="@Url.Action("Index", "Phone")">
             <div class="form-group">
-                <label></label>
-                <input type="text" class="form-control" />
+                <label>Phone</label>
+                <input type="text" name="searchTermPhone" placeholder="Phone" class="form-control" value="@searchTermPhone"/>
             </div>
             <div class="form-group">
-                <label></label>
-                <input type="text" class="form-control" />
+                <label>Brand</label>
+                @Html.DropDownList("searchTermBrand", new SelectList(brands, "Id", "Name"), "All", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" name="searchTermMinPrice" placeholder="$ Min" class="form-control" value="@searchTermMinPrice"/>
+                <br />
+                <input type="text" name="searchTermMaxPrice" placeholder="$ Max" class="form-control" value="@searchTermMaxPrice"/>
             </div>
             <button type="submit" class="btn btn-success">Search</button>
         </form>
+
     </div>
     <div class="col-md-10">
         <div class="row">

@@ -103,11 +103,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="Data\Brand.cs" />
+    <Compile Include="Data\BrandRepository.cs" />
     <Compile Include="Data\MobilePhonesContext.cs" />
     <Compile Include="Data\Phone.cs" />
     <Compile Include="Data\PhoneRepository.cs" />
     <Compile Include="Data\Photo.cs" />
-    <Compile Include="Data\PhotoRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -9,9 +9,13 @@ namespace MobilePhones.Controllers
 {
     public class PhoneController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
         {
-            var model = PhoneRepository.GetPhones();
+            var model = PhoneRepository.GetPhones(searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice);
+            ViewBag.Brands = BrandRepository.GetBrands();
+            ViewBag.SearchTermPhone = searchTermPhone;
+            ViewBag.SearchTermMinPrice = searchTermMinPrice;
+            ViewBag.SearchTermMaxPrice = searchTermMaxPrice;
             return View(model);
         }
 

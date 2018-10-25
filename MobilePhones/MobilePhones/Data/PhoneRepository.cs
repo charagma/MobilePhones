@@ -9,14 +9,32 @@ namespace MobilePhones.Data
 {
     public class PhoneRepository
     {
-        public static List<Phone> GetPhones()
+        public static List<Phone> GetPhones(string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
         {
             try
             {
                 using (var db = new MobilePhonesContext())
                 {
-                    var phones = db.Phones.Include(p => p.Photos).OrderByDescending(p => p.Id).ToList();
-                    return phones;
+                    IQueryable<Phone> query = db.Phones;
+
+                    if (searchTermPhone != null)
+                    {
+                        query = query.Where(p => p.Name.Contains(searchTermPhone));
+                    }
+                    if (searchTermBrand != null)
+                    {
+                        query = query.Where(p => p.BrandId == searchTermBrand);
+                    }
+                    if (searchTermMinPrice != null)
+                    {
+                        query = query.Where(p => p.Price >= searchTermMinPrice);
+                    }
+                    if (searchTermMaxPrice != null)
+                    {
+                        query = query.Where(p => p.Price <= searchTermMaxPrice);
+                    }
+
+                    return query.Include(p => p.Photos).OrderByDescending(p => p.Id).ToList();
                 }
             }
             catch (Exception e)
