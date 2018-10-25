@@ -18,6 +18,10 @@ namespace MobilePhones.Controllers
         public ActionResult Specs(int id)
         {
             var model = PhoneRepository.GetPhone(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
             return View(model);
         }
     }

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        a {
+            color: #333;
+        }
+            a:hover {
+                text-decoration: none;
+                color: #333;
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <a href="@Url.Action("Index", "Phone")"><h1><strong>eMobile</strong></h1></a>
+        @RenderBody()
+    </div>    
+</body>
+</html>
