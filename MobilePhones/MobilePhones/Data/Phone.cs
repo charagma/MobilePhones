@@ -14,7 +14,7 @@ namespace MobilePhones.Data
         [StringLength(100)]
         public string Dimensions { get; set; }
         public int Weight { get; set; }
-        public int ScreenSize { get; set; }
+        public double ScreenSize { get; set; }
         [StringLength(100)]
         public string Resolution { get; set; }
         [StringLength(100)]
