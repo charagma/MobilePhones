@@ -95,18 +95,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Errors.txt" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="Data\Brand.cs" />
     <Compile Include="Data\MobilePhonesContext.cs" />
     <Compile Include="Data\Phone.cs" />
+    <Compile Include="Data\PhoneRepository.cs" />
     <Compile Include="Data\Photo.cs" />
+    <Compile Include="Data\PhotoRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Migrations\201810251317490_Initial.cs" />
     <Compile Include="Migrations\201810251317490_Initial.Designer.cs">
       <DependentUpon>201810251317490_Initial.cs</DependentUpon>
@@ -119,12 +124,17 @@
     <Compile Include="Migrations\201810251342206_PhotosTableCreated.Designer.cs">
       <DependentUpon>201810251342206_PhotosTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810251358599_PhoneScreenSizeTypeChanged.cs" />
+    <Compile Include="Migrations\201810251358599_PhoneScreenSizeTypeChanged.Designer.cs">
+      <DependentUpon>201810251358599_PhoneScreenSizeTypeChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Phone\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,8 +143,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Files\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810251342206_PhotosTableCreated.resx">
       <DependentUpon>201810251342206_PhotosTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810251358599_PhoneScreenSizeTypeChanged.resx">
+      <DependentUpon>201810251358599_PhoneScreenSizeTypeChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
