@@ -11,13 +11,14 @@ namespace MobilePhones.Controllers
     {
         public ActionResult Index(int? activePage, string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
         {
-            if (activePage == null)
+            if (activePage == null || activePage <= 0)
             {
                 activePage = 1;
             }
             var model = PhoneRepository.GetPhones(activePage.Value, searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice);
             ViewBag.Brands = BrandRepository.GetBrands();
             ViewBag.SearchTermPhone = searchTermPhone;
+            ViewBag.SearchTermBrand = searchTermBrand;
             ViewBag.SearchTermMinPrice = searchTermMinPrice;
             ViewBag.SearchTermMaxPrice = searchTermMaxPrice;
             ViewBag.ActivePage = activePage.Value;

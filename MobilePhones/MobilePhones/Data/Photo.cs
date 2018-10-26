@@ -9,6 +9,7 @@ namespace MobilePhones.Data
     public class Photo
     {
         public int Id { get; set; }
+        [Required]
         [StringLength(100)]
         public string FileName { get; set; }
 

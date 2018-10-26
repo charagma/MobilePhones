@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201810251936017_PhoneDecimalColumns.Designer.cs">
       <DependentUpon>201810251936017_PhoneDecimalColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810261755342_BrandAndPhotoRequiredColumns.cs" />
+    <Compile Include="Migrations\201810261755342_BrandAndPhotoRequiredColumns.Designer.cs">
+      <DependentUpon>201810261755342_BrandAndPhotoRequiredColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810251936017_PhoneDecimalColumns.resx">
       <DependentUpon>201810251936017_PhoneDecimalColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810261755342_BrandAndPhotoRequiredColumns.resx">
+      <DependentUpon>201810261755342_BrandAndPhotoRequiredColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

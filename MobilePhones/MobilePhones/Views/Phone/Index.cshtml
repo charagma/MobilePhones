@@ -3,6 +3,7 @@
 @{
     List<Brand> brands = ViewBag.Brands;
     string searchTermPhone = ViewBag.SearchTermPhone;
+    int? searchTermBrand = ViewBag.SearchTermBrand;
     int? searchTermMinPrice = ViewBag.SearchTermMinPrice;
     int? searchTermMaxPrice = ViewBag.SearchTermMaxPrice;
     int activePage = ViewBag.ActivePage;
@@ -49,26 +50,51 @@
             }
         </div>
 
-        <nav>
-            <ul class="pagination">
-                <li class="@(activePage == 1 ? "disabled" : "")">
-                    <a href="@Url.Action("Index", "Phone", new { activePage = activePage-1, searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">
-                        <span>&laquo;</span>
-                    </a>
-                </li>
-                @for (int i = 1; i <= pageCount; i++)
-                {
-                    <li class="@(activePage == i ? "active" : "")">
-                        <a href="@Url.Action("Index", "Phone", new { activePage= i , searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">@i</a>
-                    </li>
-                }
-                <li class="@(activePage == pageCount ? "disabled" : "")">
-                    <a href="@Url.Action("Index", "Phone", new { activePage = activePage+1, searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">
-                        <span >&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        @if (pageCount > 1)
+        {
+            <nav>
+                <ul class="pagination">
+                    @if (activePage == 1)
+                    {
+                        <li class="disabled">
+                            <a>
+                                <span>&laquo;</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Phone", new { activePage = activePage-1, searchTermPhone, searchTermBrand ,searchTermMinPrice, searchTermMaxPrice})">
+                                <span>&laquo;</span>
+                            </a>
+                        </li>
+                    }
+                    @for (int i = 1; i <= pageCount; i++)
+                    {
+                        <li class="@(activePage == i ? "active" : "")">
+                            <a href="@Url.Action("Index", "Phone", new { activePage= i , searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice})">@i</a>
+                        </li>
+                    }
+                    @if (activePage == pageCount)
+                    {
+                        <li class="disabled">
+                            <a>
+                                <span>&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Phone", new { activePage = activePage+1, searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice})">
+                                <span>&raquo;</span>
+                            </a>
+                        </li>
+                    }                   
+                </ul>
+            </nav>
+        }        
     </div>
 </div>
 

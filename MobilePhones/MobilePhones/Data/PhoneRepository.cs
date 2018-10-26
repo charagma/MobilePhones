@@ -9,31 +9,37 @@ namespace MobilePhones.Data
 {
     public class PhoneRepository
     {
+        private static IQueryable<Phone> GetPhoneQuery(MobilePhonesContext db, string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
+        {
+            IQueryable<Phone> query = db.Phones;
+
+            if (searchTermPhone != null)
+            {
+                query = query.Where(p => p.Name.Contains(searchTermPhone));
+            }
+            if (searchTermBrand != null)
+            {
+                query = query.Where(p => p.BrandId == searchTermBrand);
+            }
+            if (searchTermMinPrice != null)
+            {
+                query = query.Where(p => p.Price >= searchTermMinPrice);
+            }
+            if (searchTermMaxPrice != null)
+            {
+                query = query.Where(p => p.Price <= searchTermMaxPrice);
+            }
+
+            return query;
+        }
+
         public static double GetPageCount(string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
         {
             try
             {
                 using (var db = new MobilePhonesContext())
                 {
-                    IQueryable<Phone> query = db.Phones;
-
-                    if (searchTermPhone != null)
-                    {
-                        query = query.Where(p => p.Name.Contains(searchTermPhone));
-                    }
-                    if (searchTermBrand != null)
-                    {
-                        query = query.Where(p => p.BrandId == searchTermBrand);
-                    }
-                    if (searchTermMinPrice != null)
-                    {
-                        query = query.Where(p => p.Price >= searchTermMinPrice);
-                    }
-                    if (searchTermMaxPrice != null)
-                    {
-                        query = query.Where(p => p.Price <= searchTermMaxPrice);
-                    }
-
+                    var query = GetPhoneQuery(db, searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice);
                     return Math.Ceiling(1.0 * query.Count() / 6);
                 }
             }
@@ -50,25 +56,7 @@ namespace MobilePhones.Data
             {
                 using (var db = new MobilePhonesContext())
                 {
-                    IQueryable<Phone> query = db.Phones;
-
-                    if (searchTermPhone != null)
-                    {
-                        query = query.Where(p => p.Name.Contains(searchTermPhone));
-                    }
-                    if (searchTermBrand != null)
-                    {
-                        query = query.Where(p => p.BrandId == searchTermBrand);
-                    }
-                    if (searchTermMinPrice != null)
-                    {
-                        query = query.Where(p => p.Price >= searchTermMinPrice);
-                    }
-                    if (searchTermMaxPrice != null)
-                    {
-                        query = query.Where(p => p.Price <= searchTermMaxPrice);
-                    }
-
+                    var query = GetPhoneQuery(db, searchTermPhone, searchTermBrand, searchTermMinPrice, searchTermMaxPrice);
                     return query.Include(p => p.Photos).OrderByDescending(p => p.Id).Skip(6*(activePage-1)).Take(6).ToList();
                 }
             }
