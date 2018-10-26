@@ -5,6 +5,8 @@
     string searchTermPhone = ViewBag.SearchTermPhone;
     int? searchTermMinPrice = ViewBag.SearchTermMinPrice;
     int? searchTermMaxPrice = ViewBag.SearchTermMaxPrice;
+    int activePage = ViewBag.ActivePage;
+    double pageCount = ViewBag.PageCount;
 }
 
 <div class="row">
@@ -46,6 +48,27 @@
                 </div>
             }
         </div>
+
+        <nav>
+            <ul class="pagination">
+                <li class="@(activePage == 1 ? "disabled" : "")">
+                    <a href="@Url.Action("Index", "Phone", new { activePage = activePage-1, searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+                @for (int i = 1; i <= pageCount; i++)
+                {
+                    <li class="@(activePage == i ? "active" : "")">
+                        <a href="@Url.Action("Index", "Phone", new { activePage= i , searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">@i</a>
+                    </li>
+                }
+                <li class="@(activePage == pageCount ? "disabled" : "")">
+                    <a href="@Url.Action("Index", "Phone", new { activePage = activePage+1, searchTermPhone, searchTermMinPrice, searchTermMaxPrice})">
+                        <span >&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 

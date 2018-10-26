@@ -9,7 +9,7 @@ namespace MobilePhones.Data
 {
     public class PhoneRepository
     {
-        public static List<Phone> GetPhones(string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
+        public static double GetPageCount(string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
         {
             try
             {
@@ -34,7 +34,42 @@ namespace MobilePhones.Data
                         query = query.Where(p => p.Price <= searchTermMaxPrice);
                     }
 
-                    return query.Include(p => p.Photos).OrderByDescending(p => p.Id).ToList();
+                    return Math.Ceiling(1.0 * query.Count() / 6);
+                }
+            }
+            catch (Exception e)
+            {
+                LogHelper.LogError(e);
+                return 1;
+            }
+        }
+
+        public static List<Phone> GetPhones(int activePage, string searchTermPhone, int? searchTermBrand, int? searchTermMinPrice, int? searchTermMaxPrice)
+        {
+            try
+            {
+                using (var db = new MobilePhonesContext())
+                {
+                    IQueryable<Phone> query = db.Phones;
+
+                    if (searchTermPhone != null)
+                    {
+                        query = query.Where(p => p.Name.Contains(searchTermPhone));
+                    }
+                    if (searchTermBrand != null)
+                    {
+                        query = query.Where(p => p.BrandId == searchTermBrand);
+                    }
+                    if (searchTermMinPrice != null)
+                    {
+                        query = query.Where(p => p.Price >= searchTermMinPrice);
+                    }
+                    if (searchTermMaxPrice != null)
+                    {
+                        query = query.Where(p => p.Price <= searchTermMaxPrice);
+                    }
+
+                    return query.Include(p => p.Photos).OrderByDescending(p => p.Id).Skip(6*(activePage-1)).Take(6).ToList();
                 }
             }
             catch (Exception e)
