@@ -1,12 +1,1 @@
-﻿a
-
-LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
-
-LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
-
-LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
-
-LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
-
-LINQ to Entities does not recognize the method 'Int32 Parse(System.String)' method, and this method cannot be translated into a store expression.
-
+﻿
