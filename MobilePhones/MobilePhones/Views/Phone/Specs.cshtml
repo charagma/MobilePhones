@@ -15,7 +15,7 @@
                 <div style="margin-bottom: 20px;">
                     @if (!string.IsNullOrEmpty(@Model.Video))
                     {
-                        <iframe class="center-block" width="560" height="315" src="@("https://www.youtube.com/embed/"+ @Model.Video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe style="height: 300px;" class="center-block img-responsive"  width="560" height="315" src="@("https://www.youtube.com/embed/"+ @Model.Video)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     }
                 </div>
             </div>
